@@ -12,7 +12,13 @@ Requirements
 Installation
 ------------
 
-Execute this command to install the project:
+Execute this command to download the application:
+
+```bash
+$ git clone https://github.com/ragrawalin/date-diff.git
+```
+
+Execute this command to install all the requirements for the application:
 
 ```bash
 $ composer install
