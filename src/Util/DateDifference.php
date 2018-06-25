@@ -18,7 +18,7 @@ class DateDifference extends Controller
 
     /**
      * Calculates total number of days between 2 given dates. Idea is to
-     * calculate number of days in both given dates and subtract them to get total
+     * calculate number of days in both given dates separately and subtract them to get total
      * number of days between both the dates.
      *
      * @param \DateTime $fromDate
