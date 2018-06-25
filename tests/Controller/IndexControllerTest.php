@@ -16,6 +16,9 @@ use Symfony\Component\HttpFoundation\Response;
 class IndexControllerTest extends WebTestCase
 {
 
+    /**
+     * Checks if the datediff_index page is loaded properly.
+     */
     public function testIndexAction()
     {
         $client = static::createClient([], [
