@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('build/css/app.css') }}">
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('build/js/app.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+    <h1>Date Difference Calculator</h1>
+
+    {{ form_start(form) }}
+        {{ form_row(form.fromDate) }}
+        {{ form_row(form.toDate) }}
+        <button type="submit" class="btn btn-primary">
+            <i class="fa fa-save" aria-hidden="true"></i> Get Days
+        </button>
+    {{ form_end(form) }}
+
+{% endblock %}
