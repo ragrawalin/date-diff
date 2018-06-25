@@ -16,9 +16,12 @@
     {{ form_start(form) }}
         {{ form_row(form.fromDate) }}
         {{ form_row(form.toDate) }}
-        <button type="submit" class="btn btn-primary">
-            <i class="fa fa-save" aria-hidden="true"></i> Get Days
+        <button id="get-difference-button" type="submit" class="btn btn-primary">
+            {{ 'label.get_difference_button'|trans }}
         </button>
     {{ form_end(form) }}
-
+    <hr/>
+    {% if difference != -1 %}
+        {{ 'label.difference_days'|trans }} : <b> {{ difference }} {{ 'label.days'|trans }} </b>
+    {% endif %}
 {% endblock %}

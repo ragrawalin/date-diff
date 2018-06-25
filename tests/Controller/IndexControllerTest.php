@@ -24,15 +24,15 @@ class IndexControllerTest extends WebTestCase
         ]);
 
         $crawler = $client->request('GET', '/');
-        $form = $crawler->selectButton('Get Days')->form([
+
+        $form = $crawler->selectButton('label.get_difference_button')->form([
             'form[fromDate]' => '2003-02-24',
             'form[toDate]' => '2017-11-12',
         ]);
 
         $client->submit($form);
 
-
-        $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
+        $this->assertSame(Response::HTTP_OK, $client->getResponse()->getStatusCode());
 
     }
 }

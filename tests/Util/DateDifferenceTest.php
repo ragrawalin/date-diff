@@ -13,6 +13,10 @@ use PHPUnit\Framework\TestCase;
 
 class DateDifferenceTest extends TestCase
 {
+    /**
+     * This test compares result of getDateDifference function in DateDifference class with
+     * output from inbuilt date_diff function.
+     */
     public function testGetDateDifference()
     {
         $dateDifference = new DateDifference();
@@ -21,7 +25,7 @@ class DateDifferenceTest extends TestCase
             [ new \DateTime('1999-01-28'), new \DateTime('2018-03-21') ],
             [ new \DateTime('2003-01-28'), new \DateTime('2018-03-21') ],
             [ new \DateTime('2012-01-28'), new \DateTime('2013-03-21') ],
-            [ new \DateTime('1999-01-28'), new \DateTime('2000-03-21') ],
+            [ new \DateTime('1999-05-28'), new \DateTime('2000-03-21') ],
         ];
 
         foreach($testCases as $testCase)

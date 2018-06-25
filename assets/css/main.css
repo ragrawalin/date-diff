@@ -1,3 +1,11 @@
 .body-container{
     padding-top: 50px;
 }
+
+#get-difference-button{
+    margin-top: 1rem;
+}
+
+label[for="form_toDate"]{
+    margin-top: .5rem;
+}

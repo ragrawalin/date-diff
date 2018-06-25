@@ -21,34 +21,36 @@ class IndexController extends Controller
 {
 
     /**
+     * Displays a form to calculate difference between 2 dates.
+     *
      * @Route("/", name="datediff_index")
      * @param Request $request
      * @return Response
      */
     public function indexAction(Request $request): Response
     {
+        $difference = -1;
 
         $form = $this->buildForm($request);
 
-        // the isSubmitted() method is completely optional because the other
-        // isValid() method already checks whether the form is submitted.
-        // However, we explicitly add it to improve code readability.
-        // See https://symfony.com/doc/current/best_practices/forms.html#handling-form-submits
         if ($form->isSubmitted() && $form->isValid())
         {
             $data = $form->getData();
 
             $dd = new DateDifference();
 
-            echo $dd->getDateDifference($data['fromDate'], $data['toDate']);
+            $difference = $dd->getDateDifference($data['fromDate'], $data['toDate']);
         }
 
         return $this->render('index.html.twig', [
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'difference' => $difference
             ]);
     }
 
     /**
+     * Builds a form which is used to take dates as an input.
+     *
      * @param Request $request
      * @return \Symfony\Component\Form\FormInterface
      */
@@ -60,12 +62,12 @@ class IndexController extends Controller
             ->add('fromDate', DateType::class, array(
                 'widget' => 'single_text',
                 'html5' => false,
-                'attr' => ['class' => 'js-datepicker', 'autocomplete' => 'off']
+                'attr' => ['class' => 'js-datepicker form-control', 'autocomplete' => 'off']
             ))
             ->add('toDate', DateType::class, array(
                 'widget' => 'single_text',
                 'html5' => false,
-                'attr' => ['class' => 'js-datepicker', 'autocomplete' => 'off']
+                'attr' => ['class' => 'js-datepicker form-control', 'autocomplete' => 'off']
             ))
             ->getForm();
 
