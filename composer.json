@@ -70,9 +70,6 @@
         ],
         "post-update-cmd": [
             "@auto-scripts"
-        ],
-        "compile": [
-            "npm install && ./node_modules/.bin/encore production"
         ]
     },
     "conflict": {
