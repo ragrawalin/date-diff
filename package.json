@@ -9,9 +9,6 @@
         "dev": "encore dev",
         "watch": "encore dev --watch",
         "build": "encore production",
-        "compile": [
-          "npm install && node_modules/.bin/encore production"
-        ]
     },
     "dependencies": {
         "jquery": "^3.3.1"
