@@ -8,6 +8,7 @@
 
 namespace App\Util;
 
+use PHPUnit\Framework\Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class DateDifference extends Controller
@@ -21,26 +22,50 @@ class DateDifference extends Controller
      * calculate number of days in both given dates separately and subtract them to get total
      * number of days between both the dates.
      *
-     * @param \DateTime $fromDate
-     * @param \DateTime $toDate
+     * If use of DateTime class is not permitted, we could also use date in string format and split on '-'
+     * to get individual year, month & date. I have used DateTime class just to hold values of fromDate
+     * and toDate fields, and get year, month and day from dates. But all the calculations are done separately.
+     *
+     * $fromDate and $toDate are expected to be in YYYY-MM-DD format.
+     *
+     * @param \DateTime|string $fromDate
+     * @param \DateTime|string $toDate
      * @return int
      */
     public function getDateDifference($fromDate, $toDate): int
     {
-        return $this->getDaysForDate($toDate) - $this->getDaysForDate($fromDate);
+        return abs($this->getDaysForDate($toDate) - $this->getDaysForDate($fromDate));
     }
 
     /**
      * Calculates total number of days in the given date.
      *
-     * @param \DateTime $date
+     * @param \DateTime|string $date
      * @return int
      */
     private function getDaysForDate($date): int
     {
-        $day = (int) $date->format('d');
-        $month = (int) $date->format('m');
-        $year = (int) $date->format('Y');
+        if($date instanceof \DateTime)
+        {
+            $day = (int) $date->format('d');
+            $month = (int) $date->format('m');
+            $year = (int) $date->format('Y');
+        }
+        else
+        {
+            if(!$this->validateDate($date))
+            {
+                throw new Exception("Invalid date format or invalid date. Please use YYYY-MM-DD format.", 101);
+            }
+            else
+            {
+                $temp = explode("-", $date);
+
+                $year = (int) $temp[0];
+                $month = (int) $temp[1];
+                $day = (int) $temp[2];
+            }
+        }
 
         $totalDays = (($year * $this::YEAR_DAYS) + $day);
 
@@ -52,6 +77,19 @@ class DateDifference extends Controller
         $totalDays += $this->countLeapYears($year, $month);
 
         return $totalDays;
+    }
+
+    /**
+     * Checks the format of the date.
+     *
+     * @param string $date
+     * @return bool
+     */
+    private function validateDate($date)
+    {
+        $datePattern = "/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])/";
+
+        return preg_match($datePattern, $date);
     }
 
     /**
@@ -68,6 +106,10 @@ class DateDifference extends Controller
     {
         if($month <= 2) $year--;
 
-        return $year / 4 - $year / 100 + $year / 400;
+        $leapYears = floor($year / 4);
+        $leapYears -= floor($year / 100);
+        $leapYears += floor($year / 400);
+
+        return $leapYears;
     }
 }

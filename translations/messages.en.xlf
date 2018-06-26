@@ -10,9 +10,22 @@
                 <source>label.difference_days</source>
                 <target>Difference between above dates</target>
             </trans-unit>
+            <trans-unit id="label.fromDate">
+                <source>label.fromDate</source>
+                <target>From Date</target>
+            </trans-unit>
             <trans-unit id="label.days">
                 <source>label.days</source>
                 <target>days</target>
+            </trans-unit>
+            <trans-unit id="help.subtitle">
+                <source>help.subtitle</source>
+                <target>Click in the text boxes below to select dates from a calendar. You can click on the top mid
+                section of the calendar to select other months/years. Dates are formated as YYYY-MM-DD.</target>
+            </trans-unit>
+            <trans-unit id="note.subtitle">
+                <source>note.subtitle</source>
+                <target>Note: These fields default to current date in case the date provided is in a wrong format. </target>
             </trans-unit>
         </body>
     </file>

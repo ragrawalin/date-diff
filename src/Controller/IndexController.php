@@ -62,12 +62,18 @@ class IndexController extends Controller
             ->add('fromDate', DateType::class, array(
                 'widget' => 'single_text',
                 'html5' => false,
-                'attr' => ['class' => 'js-datepicker form-control', 'autocomplete' => 'off']
+                'attr' => [
+                    'class' => 'js-datepicker form-control input-inline datepicker',
+                    'autocomplete' => 'off',
+                ]
             ))
             ->add('toDate', DateType::class, array(
                 'widget' => 'single_text',
                 'html5' => false,
-                'attr' => ['class' => 'js-datepicker form-control', 'autocomplete' => 'off']
+                'attr' => [
+                    'class' => 'js-datepicker form-control input-inline datepicker',
+                    'autocomplete' => 'off',
+                ]
             ))
             ->getForm();
 

@@ -12,8 +12,15 @@
 
 {% block body %}
     <h1>Date Difference Calculator</h1>
-
+    <div class="alert alert-primary"> {{ 'help.subtitle'|trans }}</div>
+    <div class="alert alert-warning"> {{ 'note.subtitle'|trans }}</div>
     {{ form_start(form) }}
+    {#<div class="input-group date" data-provide="datepicker">#}
+        {#<input type="text" class="form-control">#}
+        {#<div class="input-group-addon">#}
+            {#<span class="glyphicon glyphicon-th"></span>#}
+        {#</div>#}
+    {#</div>#}
         {{ form_row(form.fromDate) }}
         {{ form_row(form.toDate) }}
         <button id="get-difference-button" type="submit" class="btn btn-primary">
