@@ -21,7 +21,15 @@
             {#<span class="glyphicon glyphicon-th"></span>#}
         {#</div>#}
     {#</div>#}
-        {{ form_row(form.fromDate) }}
+    <div>
+        {{ form_label(form.fromDate) }}
+        {{ form_errors(form.fromDate) }}
+        {{ form_widget(form.fromDate) }}
+        {#{{ form_help(form.fromDate) }}#}
+    </div>
+
+
+        {#{{ form_row(form.fromDate) }}#}
         {{ form_row(form.toDate) }}
         <button id="get-difference-button" type="submit" class="btn btn-primary">
             {{ 'label.get_difference_button'|trans }}

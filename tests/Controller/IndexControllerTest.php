@@ -21,10 +21,7 @@ class IndexControllerTest extends WebTestCase
      */
     public function testIndexAction()
     {
-        $client = static::createClient([], [
-            'PHP_AUTH_USER' => 'jane_admin',
-            'PHP_AUTH_PW' => 'kitten',
-        ]);
+        $client = static::createClient([], [ ]);
 
         $crawler = $client->request('GET', '/');
 

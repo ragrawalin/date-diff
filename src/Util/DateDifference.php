@@ -14,11 +14,18 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class DateDifference extends Controller
 {
 
+    /**
+     * The items in the array represents numbers of days in that particular month.
+     */
     const MONTH_DAYS = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
+    /**
+     * Total days in an year.
+     */
     const YEAR_DAYS = 365;
 
     /**
-     * Calculates total number of days between 2 given dates. Idea is to
+     * Calculates total number of days between 2 given dates. The idea is to
      * calculate number of days in both given dates separately and subtract them to get total
      * number of days between both the dates.
      *
@@ -38,7 +45,9 @@ class DateDifference extends Controller
     }
 
     /**
-     * Calculates total number of days in the given date.
+     * Calculates total number of days in the given date. The idea is to calculate
+     * total number of days in the given date using 365 days in an year and total leap
+     * years from 1st year to current year which is then added to the count.
      *
      * @param \DateTime|string $date
      * @return int
@@ -80,7 +89,7 @@ class DateDifference extends Controller
     }
 
     /**
-     * Checks the format of the date.
+     * Checks the format(YYYY-MM-DD) of the date.
      *
      * @param string $date
      * @return bool
